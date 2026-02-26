@@ -38,12 +38,27 @@
             </div>
 
             <div class="flex-1 flex justify-end gap-3">
-                <a href="/login" class="text-gray-700 font-body font-medium px-4 py-2 rounded-lg hover:bg-stone-200 transition-all duration-200">
-                    Login
-                </a>
-                <a href="/register" class="bg-primary text-white font-body font-bold px-4 py-2 rounded-lg hover:bg-primary/80 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md">
-                    Register
-                </a>
+                @auth
+                    <span class="text-gray-700 font-body font-medium px-4 py-2 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        {{ Auth::user()->name }}
+                    </span>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-gray-700 font-body font-medium px-4 py-2 rounded-lg hover:bg-stone-200 transition-all duration-200">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="text-gray-700 font-body font-medium px-4 py-2 rounded-lg hover:bg-stone-200 transition-all duration-200">
+                        Login
+                    </a>
+                    <a href="{{ route('register') }}" class="bg-primary text-white font-body font-bold px-4 py-2 rounded-lg hover:bg-primary/80 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md">
+                        Register
+                    </a>
+                @endauth
             </div>
         </div>
     </div>
