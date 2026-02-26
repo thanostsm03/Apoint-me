@@ -7,6 +7,7 @@
             <!-- Search Bar -->
             <div class="bg-white rounded-2xl shadow-lg p-4 border border-gray-200">
                 <form action="{{ route('businesses.index') }}" method="GET" class="flex flex-col md:flex-row gap-4">
+                    @csrf
                     <div class="flex-1 relative">
                         <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
