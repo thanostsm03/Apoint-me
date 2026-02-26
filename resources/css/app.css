@@ -21,6 +21,10 @@
     --secondary: #2489cc;
     --accent: #c32918;
   }
+  
+  [x-cloak] {
+    display: none !important;
+  }
 }
 
 @theme {
