@@ -17,7 +17,7 @@
     <button type="button" 
             @click="open = !open"
             class="appearance-none w-full md:w-56 pl-12 pr-10 py-3 rounded-xl border-2 border-gray-200 hover:border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body bg-white cursor-pointer text-gray-700 font-medium text-left">
-        <span x-text="selectedLabel"></span>
+        <span x-text="selectedLabel" class="block truncate"></span>
     </button>
     
     <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-primary pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@
         
         <!-- Options List -->
         <div class="max-h-48 overflow-auto">
-            <div @click="selected = ''; selectedLabel = '{{ $placeholder }}'; open = false; search = ''"
+            <div @click="selected = ''; selectedLabel = '{{ $placeholder }}'; open = false; search = ''; $nextTick(() => $el.closest('form').submit())"
                  class="px-4 py-3 hover:bg-primary/10 cursor-pointer transition-colors font-body text-gray-700 border-b border-gray-100">
                 {{ $placeholder }}
             </div>
