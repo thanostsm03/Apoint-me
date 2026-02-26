@@ -37,9 +37,12 @@
                 </a>
             </div>
 
-            <div class="flex-1 flex justify-end">
-                <a href="/login" class="bg-primary text-background px-4 py-2 rounded hover:bg-secondary transition">
+            <div class="flex-1 flex justify-end gap-3">
+                <a href="/login" class="text-gray-700 font-body font-medium px-4 py-2 rounded-lg hover:bg-stone-200 transition-all duration-200">
                     Login
+                </a>
+                <a href="/register" class="bg-primary text-white font-body font-bold px-4 py-2 rounded-lg hover:bg-primary/80 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md">
+                    Register
                 </a>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Validation\ValidationException;
 
 class Business extends Model
@@ -13,13 +14,18 @@ class Business extends Model
 
     protected $fillable = ['name', 'slug', 'description', 'category', 'subcategory', 'country', 'city', 'zip', 'address', 'email', 'phone', 'website', 'isActive', 'isVerified'];
 
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(Owner::class);
+    }
+
     protected static function booted()
     {
         static::saving(function ($business) {
-            $allowedSubcategories = array_keys(config('business_categories.' . $business->category . '.subcategories', []));
-            if (!in_array($business->subcategory, $allowedSubcategories)) {
+            $allowedSubcategories = array_keys(config('business_categories.'.$business->category.'.subcategories', []));
+            if (! in_array($business->subcategory, $allowedSubcategories)) {
                 throw ValidationException::withMessages([
-                    'subcategory' => "Subcategory '{$business->subcategory}' is not valid for category '{$business->category}'."
+                    'subcategory' => "Subcategory '{$business->subcategory}' is not valid for category '{$business->category}'.",
                 ]);
             }
         });
