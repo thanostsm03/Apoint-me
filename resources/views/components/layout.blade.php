@@ -10,9 +10,8 @@
 </head>
 
 <body>
-    <div class="text-2xl">
-        This should be large!
-    </div>
+    <x-navbar />
+    {{ $slot }}
 </body>
 
 </html>
