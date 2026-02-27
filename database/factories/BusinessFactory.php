@@ -35,6 +35,8 @@ class BusinessFactory extends Factory
             'website' => fake()->url(),
             'isActive' => true,
             'isVerified' => true,
+
+            'owner_id' => \App\Models\Owner::inRandomOrder()->first()->id,
         ];
     }
 }

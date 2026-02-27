@@ -15,11 +15,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        \App\Models\Business::factory(100)->create();
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        $users = User::factory(100)->create();
+
+        $users->take(50)->each(function ($user) {
+            \App\Models\Owner::factory()->create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+            ]);
+        });
+
+        $businesses = \App\Models\Business::factory(100)->create();
+
+        $businesses->each(function ($business) {
+            \App\Models\Service::factory(10)->create([
+                'business_id' => $business->id,
+            ]);
+        });
+
     }
 }

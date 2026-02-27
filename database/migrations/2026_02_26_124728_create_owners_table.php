@@ -15,14 +15,13 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('phone');
+            $table->string('email');
             $table->foreignIdFor(\App\Models\User::class)->constrained();
 
             $table->timestamps();
         });
 
-        Schema::table('businesses', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Owner::class)->constrained();
-        });
     }
 
     /**
@@ -30,10 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('businesses', function (Blueprint $table) {
-            $table->dropForeignIdFor(\App\Models\Business::class);
-        });
-
         Schema::dropIfExists('owners');
     }
 };

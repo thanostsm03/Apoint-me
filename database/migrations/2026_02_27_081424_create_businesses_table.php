@@ -31,6 +31,8 @@ return new class extends Migration
             $table->boolean('isActive')->default(true);
             $table->boolean('isVerified')->default(false);
 
+            $table->foreignIdFor(\App\Models\Owner::class)->constrained();
+
             $table->timestamps();
         });
     }
