@@ -15,6 +15,11 @@ class Business extends Model
 
     protected $fillable = ['name', 'slug', 'description', 'category', 'subcategory', 'country', 'city', 'zip', 'address', 'email', 'phone', 'website', 'isActive', 'isVerified'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(Owner::class);

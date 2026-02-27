@@ -11,7 +11,7 @@ class Owner extends Model
     /** @use HasFactory<\Database\Factories\OwnerFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'phone', 'email'];
+    protected $fillable = ['user_id', 'name', 'email', 'phone'];
 
     public function businesses(): HasMany
     {
