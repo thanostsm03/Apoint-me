@@ -21,7 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('owner', OwnerController::class)
         ->only(['create', 'store']);
     Route::resource('my_businesses', MyBusinessesController::class);
-
 });
 
 Route::resource('businesses', BusinessController::class)

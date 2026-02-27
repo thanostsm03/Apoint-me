@@ -13,9 +13,9 @@ class Business extends Model
     /** @use HasFactory<\Database\Factories\BusinessFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'description', 'category', 'subcategory', 'country', 'city', 'zip', 'address', 'email', 'phone', 'website', 'isActive', 'isVerified'];
+    protected $fillable = ['name', 'slug', 'description', 'category', 'subcategory', 'country', 'city', 'zip', 'address', 'email', 'phone', 'website', 'isActive', 'isVerified', 'owner_id'];
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
